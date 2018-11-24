@@ -8,8 +8,6 @@ from bokeh.models.widgets import RangeSlider, Button, DataTable, TableColumn, Nu
 from bokeh.io import curdoc
 
 df = pd.read_csv(join(dirname(__file__), 'Full_Information_Cleaned.csv'))
-
-
 source = ColumnDataSource(data=dict())
 
 def update():
@@ -53,9 +51,7 @@ def update():
         'Graduate_or_professional_degree': current.Graduate_or_professional_degree,
         'Unemployed': current.Unemployed,
         'average_price': current.average_price,
-        'review_count_binned': current.review_count_binned,
-
-        
+        'review_count_binned': current.review_count_binned,   
     }
 
 
@@ -66,6 +62,8 @@ def export_csv():
     button = Button(label="Download", button_type="success")
     button.callback = CustomJS(args=dict(source=source),
                             code=open(join(dirname(__file__), "download.js")).read())
+
+    #button2 = Button(label='EXPORT DATA TO CSV\rThis demo uses a CustomJS callback to export DataTable contents to CSV.')
 
     columns = [
         TableColumn(field="name", title="Restaurant Name"),
@@ -105,15 +103,11 @@ def export_csv():
         TableColumn(field="Graduate_or_professional_degree", title="Graduate or Professional Degree", formatter=NumberFormatter(format="0,0.000")),
         TableColumn(field="Unemployed", title="Unemployed", formatter=NumberFormatter(format="0,0.000")),
         TableColumn(field="average_price", title="Average Price", formatter=NumberFormatter(format="$0,0")),
-        TableColumn(field="review_count_binned", title="Review Count Binned"),
-
-        
-        
+        TableColumn(field="review_count_binned", title="Review Count Binned"),      
         
     ]
 
-    data_table = DataTable(source=source, columns=columns, fit_columns=False, width=800, height=1000)
-
+    data_table = DataTable(source=source, columns=columns, fit_columns=False, width=1200, height=1000)
     controls = widgetbox(button)
     table = widgetbox(data_table)
 

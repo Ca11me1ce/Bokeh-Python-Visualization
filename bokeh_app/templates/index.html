@@ -1,0 +1,27 @@
+{% extends base %}
+
+{% block postamble %}
+  <style>
+    h1 {
+      margin: 0 0 0 0;
+      color: #9ACD32;
+      font-family: 'Julius Sans One', sans-serif;
+      font-size: 1.4em;
+      text-transform: uppercase;
+    }
+    p {
+      font: "Libre Baskerville", sans-serif;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+  </style>
+{% endblock %}
+
+{% block contents %}
+  <div>
+    <h1>What Makes a Great Restaurant?</h1>
+    <p> This demo uses Bokeh to show Data contents.</p>
+    <p> Data Analysis</p>
+  </div>
+  {{ super() }}
+{% endblock %}
