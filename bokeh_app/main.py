@@ -15,6 +15,7 @@ from scripts.density import density_tab
 from scripts.table import table_tab
 from scripts.draw_map import map_tab
 from scripts.routes import route_tab
+from export_csv.main import export_csv
 
 # Using included state data from Bokeh for map
 from bokeh.sampledata.us_states import data as states
@@ -33,9 +34,10 @@ tab2 = density_tab(flights)
 tab3 = table_tab(flights)
 tab4 = map_tab(map_data, states)
 tab5 = route_tab(flights)
+tab6 = export_csv()
 
 # Put all the tabs into one application
-tabs = Tabs(tabs = [tab1, tab2, tab3, tab4, tab5])
+tabs = Tabs(tabs = [tab1, tab2, tab3, tab4, tab5, tab6])
 
 # Put the tabs in the current document for display
 curdoc().add_root(tabs)
